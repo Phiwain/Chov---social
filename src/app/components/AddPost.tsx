@@ -1,5 +1,9 @@
 import Image from "next/image";
 const AddPost = () => {
+
+
+
+
     return (
         <div className="p-4 bg-white shadow-md rounded-lg flex items-center gap-4 text-sm">
             {/* ajout message */}

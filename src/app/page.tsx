@@ -11,6 +11,7 @@ const Homepage = () => {
         </div>
         <div className='w-ful lg:w-[70%] xl:w-[50%]'>
           <div className='flex flex-col gap-6'>
+
             <AddPost/>
             <Feed/>
           </div>
