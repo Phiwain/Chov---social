@@ -1,4 +1,4 @@
-import {ClerkProvider, SignIn, SignUp} from '@clerk/nextjs'
+import {ClerkProvider, SignUp} from '@clerk/nextjs'
 import {frFR} from "@clerk/localizations";
 
 export default function Page() {

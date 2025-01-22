@@ -1,16 +1,20 @@
-
-
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import MobileMenu from "@/app/components/MobileMenu";
-import {ClerkLoaded, ClerkLoading, SignedIn, SignedOut, UserButton} from "@clerk/nextjs";
+import {
+    ClerkLoaded,
+    ClerkLoading,
+    SignedIn,
+    SignedOut,
+    UserButton,
+} from "@clerk/nextjs";
 
 const Navbar = () => {
     return (
         <nav className="h-24 flex items-center justify-between px-4">
             {/* Logo ou titre du site */}
             <div className="md:hidden lg:block w-[20%]">
-
                 <Link href="/" className=" font-bold text-xl text-blue-900">
                     Intranet - CHOV
                 </Link>
@@ -40,7 +44,6 @@ const Navbar = () => {
                         />
                         <span>Amis</span>
                     </Link>
-
                 </div>
                 <div className="hidden lg:flex p-1 bg-slate-100 items-center rounded-xl">
                     <input
@@ -48,37 +51,50 @@ const Navbar = () => {
                         placeholder="recherche ..."
                         className="bg-transparent outline-none"
                     />
-                    <Image src="/search.png" alt="search" width={14} height={14}/>
+                    <Image src="/search.png" alt="search" width={14} height={14} />
                 </div>
-
             </div>
 
             <div className="w-[30%] flex items-center gap-4 xl:gap-8 justify-end">
                 <ClerkLoading>
-                    <div
-                        className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"></div>
+                    <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"></div>
                 </ClerkLoading>
                 <ClerkLoaded>
-                    <SignedIn >
+                    <SignedIn>
                         <div className="cursor-pointer">
-                            <Image src="/people.png" width={24} height={24} alt="Connection"/>
+                            <Image
+                                src="/people.png"
+                                width={24}
+                                height={24}
+                                alt="Connection"
+                            />
                         </div>
                         <div className="cursor-pointer">
-                            <Image src="/messages.png" width={20} height={20} alt="Messages"/>
+                            <Image
+                                src="/messages.png"
+                                width={20}
+                                height={20}
+                                alt="Messages"
+                            />
                         </div>
                         <div className="cursor-pointer">
-                            <Image src="/notifications.png" width={20} height={20} alt="notifications"/>
+                            <Image
+                                src="/notifications.png"
+                                width={20}
+                                height={20}
+                                alt="notifications"
+                            />
                         </div>
-                        <UserButton/>
+                        <UserButton />
                     </SignedIn>
                     <SignedOut>
                         <div className=" flex items-center gap-2 text-sm">
-                            <Image src="/login.png" width={20} height={20} alt="connection"/>
+                            <Image src="/login.png" width={20} height={20} alt="connection" />
                             <Link href="/sign-in">Connection / Enregistrement</Link>
                         </div>
                     </SignedOut>
                 </ClerkLoaded>
-                <MobileMenu/>
+                <MobileMenu />
             </div>
         </nav>
     );
