@@ -14,7 +14,7 @@
     "@clerk/nextjs": "^6.9.6",
     "@prisma/client": "^6.2.1",
     "babel-plugin-react-compiler": "^0.0.0-experimental-938cd9a-20240601",
-    "next": "^15.1.6",
+    "next": "^15.2.0-canary.19",
     "prisma": "^6.2.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",

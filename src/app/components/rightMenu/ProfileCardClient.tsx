@@ -33,7 +33,7 @@ const ProfileCardClient = ({ user }: { user: User }) => {
                     className="rounded-full object-cover w-12 h-12 absolute left-0 right-0 m-auto -bottom-6 ring-1 ring-white z-10"
                 />
             </div>
-            <div className="h-20 flex flex-col gap-2 items-center">
+            <div className=" flex flex-col gap-2 items-center">
         <span className="font-semibold">
           {user.name && user.surname
               ? `${user.name} ${user.surname}`
@@ -43,9 +43,9 @@ const ProfileCardClient = ({ user }: { user: User }) => {
           {user._count.followers} Personnes
         </span>
             </div>
-            <Link href={`/profile/${user.username}`}>
+            <Link href={`/profile/${user.username}`} className='flex justify-center'>
                 <button className="bg-blue-500 text-white text-xs p-2 rounded-md">
-                    My Profile
+                    Mon Profil
                 </button>
             </Link>
         </div>

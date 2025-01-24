@@ -1,11 +1,9 @@
-"use client";
-
 import Image from "next/image";
-import Feed from "@/app/components/Feed";
-import LeftMenu from "@/app/components/LeftMenu";
-import RightMenu from "@/app/components/RightMenu";
+import LeftMenu from "@/app/components/leftMenu/LeftMenu";
+import RightMenu from "@/app/components/rightMenu/RightMenu";
+import Feed from "@/app/components/feed/Feed";
 
-type User = {
+interface User {
     id: string;
     username: string;
     name?: string;
@@ -13,34 +11,24 @@ type User = {
     avatar?: string;
     cover?: string;
     _count: {
+        posts: number;
         followers: number;
         followings: number;
-        posts: number;
     };
-};
+}
 
-/**
- * Composant pour afficher une statistique utilisateur
- */
-const UserStat = ({ count, label }: { count: number; label: string }) => (
-    <div className="flex flex-col items-center">
-        <span className="font-medium">{count}</span>
-        <span className="text-sm">{label}</span>
-    </div>
-);
-
-/**
- * Composant client pour afficher le profil utilisateur
- */
 const ProfilePageClient = ({ user }: { user: User }) => {
+    // Ajout de valeurs par défaut au destructuring
     const {
-        username,
-        name,
-        surname,
-        avatar = "/default-avatar.png",
-        cover = "/default-cover.jpg",
-        _count: { followers = 0, followings = 0, posts = 0 },
-    } = user;
+        cover = "noCover.png",
+        avatar = "noAvatar.png",
+        name = "",
+        surname = "",
+        username = "User",
+        _count = { posts: 0, followers: 0, followings: 0 },
+    } = user || {};
+
+    console.log("User data in ProfilePageClient:", user); // Log pour déboguer
 
     return (
         <div className="flex gap-6 pt-6">
@@ -52,15 +40,14 @@ const ProfilePageClient = ({ user }: { user: User }) => {
             {/* Contenu principal */}
             <div className="w-full lg:w-[70%] xl:w-[50%]">
                 <div className="flex flex-col gap-6">
-                    {/* Section profil */}
                     <div className="flex flex-col items-center justify-center">
-                        {/* Image de couverture et avatar */}
                         <div className="w-full h-64 relative">
                             <Image
                                 src={cover}
                                 alt={`${username}'s cover`}
                                 fill
                                 className="rounded-md object-cover"
+                                loading="lazy"
                             />
                             <Image
                                 src={avatar}
@@ -68,25 +55,33 @@ const ProfilePageClient = ({ user }: { user: User }) => {
                                 width={128}
                                 height={128}
                                 className="w-32 h-32 rounded-full absolute left-0 right-0 m-auto -bottom-16 ring-4 ring-white object-cover"
+                                loading="lazy"
                             />
                         </div>
 
-                        {/* Nom d'utilisateur */}
                         <h1 className="mt-20 mb-4 text-2xl font-medium">
                             {name && surname ? `${name} ${surname}` : username}
                         </h1>
 
-                        {/* Statistiques utilisateur */}
                         <div className="flex items-center justify-center gap-12 mb-4">
-                            <UserStat count={posts} label="Publications" />
-                            <UserStat count={followers} label="Followers" />
-                            <UserStat count={followings} label="Personnes suivies" />
+                            <div className="flex flex-col items-center">
+                                <span className="font-medium">{_count.posts}</span>
+                                <span className="text-sm">Posts</span>
+                            </div>
+                            <div className="flex flex-col items-center">
+                                <span className="font-medium">{_count.followers}</span>
+                                <span className="text-sm">Followers</span>
+                            </div>
+                            <div className="flex flex-col items-center">
+                                <span className="font-medium">{_count.followings}</span>
+                                <span className="text-sm">Following</span>
+                            </div>
                         </div>
                     </div>
-
-                    {/* Feed */}
-                    <Feed />
                 </div>
+
+                {/* Feed */}
+                <Feed />
             </div>
 
             {/* Menu de droite */}

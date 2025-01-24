@@ -1,4 +1,4 @@
-import Post from "@/app/components/Post";
+import Post from "@/app/components/feed/Post";
 
 const Feed = () => {
     return (

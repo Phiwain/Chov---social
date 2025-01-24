@@ -6,7 +6,7 @@ const FriendRequests = () => {
         <div className='p-4 bg-white rounded-lg shadow-md text-sm flex flex-col gap-4'>
             <div className='flex justify-between items-center font-medium'>
                 <span className='text-gray-500'>Demande d'amis</span>
-                <Link href='/' className='text-blue-500 text-xs'>Tout voir</Link>
+                <Link href='/public' className='text-blue-500 text-xs'>Tout voir</Link>
             </div>
             <div className='flex items-center justify-between'>
                 <div className='flex items-center gap-4'>
