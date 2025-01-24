@@ -1,5 +1,5 @@
 import FriendRequests from "@/app/components/rightMenu/FriendRequests";
-import UserInfoCard from "@/app/components/rightMenu/UserInforCard";
+import UserInfoCard from "@/app/components/rightMenu/UserInfoCard";
 import ProfileCard from "@/app/components/rightMenu/ProfileCard";
 import { User } from "@prisma/client";
 import { Suspense } from "react";

@@ -18,7 +18,6 @@ interface User {
 }
 
 const ProfilePageClient = ({ user }: { user: User }) => {
-    // Ajout de valeurs par défaut au destructuring
     const {
         cover = "noCover.png",
         avatar = "noAvatar.png",
@@ -28,7 +27,7 @@ const ProfilePageClient = ({ user }: { user: User }) => {
         _count = { posts: 0, followers: 0, followings: 0 },
     } = user || {};
 
-    console.log("User data in ProfilePageClient:", user); // Log pour déboguer
+    console.log("User data in ProfilePageClient:", user);
 
     return (
         <div className="flex gap-6 pt-6">
